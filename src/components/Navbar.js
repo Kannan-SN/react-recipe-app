@@ -19,10 +19,15 @@ export default function Navbar(){
             path: "/recipes",
             icon: faList
         },
+        // {
+        //     name: "Settings",
+        //     path: "/settings",
+        //     icon: faCog
+        // },
         {
-            name: "Settings",
-            path: "/settings",
-            icon: faCog
+            name: "Add Item",
+            path: "/additem",
+           
         }
     ]
 

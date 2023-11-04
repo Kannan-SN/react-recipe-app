@@ -9,7 +9,9 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
-import Settings from "./pages/Settings";
+// import Settings from "./pages/Settings";
+import RecipeForm from "./pages/Additem";
+
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/settings" element={<Settings />} />
+          {/* <Route element={<Settings />} /> */}
+          <Route path="/additem" element={<RecipeForm/>}/>
         </Routes>
       </div>
       <Footer />
