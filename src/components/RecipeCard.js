@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -30,7 +30,7 @@ export default function RecipeCard({ recipe, onDelete }) {
         <p className="recipe-title">{recipe.recipe}</p>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Tooltip title="Like">
-            <FavoriteBorderIcon
+            <ThumbUpIcon
               style={{ marginTop: '10px', color: likeButtonColor }}
               onClick={handleLikeClick}
             />

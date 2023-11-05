@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -111,7 +111,7 @@ export function RecipeCard({ recipe, onDelete, onSearchChange, searchInput, filt
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <Tooltip title="Like">
-            <FavoriteBorderIcon
+            <ThumbUpIcon
               style={{ marginTop: '10px', color: likeButtonColor }}
               onClick={handleLikeClick}
             />
