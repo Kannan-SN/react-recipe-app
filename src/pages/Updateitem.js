@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { TextField } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
 
 export function RecipeCard({ recipe, onDelete, onSearchChange, searchInput, filteredRecipes, setFilteredRecipes, recipes, setRecipes }) {
   const [likes, setLikes] = useState(0);
@@ -14,15 +15,27 @@ export function RecipeCard({ recipe, onDelete, onSearchChange, searchInput, filt
   const [editMode, setEditMode] = useState(false);
   const [editedRecipeName, setEditedRecipeName] = useState(recipe.recipe);
 
+  useEffect(() => {
+    // Load "like" information from local storage
+    const liked = localStorage.getItem(`like-${recipe._id}`);
+    if (liked === 'true') {
+      setIsLiked(true);
+    }
+  }, [recipe._id]);
+
   const handleLikeClick = () => {
     if (isLiked) {
       setLikes(likes - 1);
+      setIsLiked(false);
+      // Save "like" information in local storage
+      localStorage.setItem(`like-${recipe._id}`, 'false');
     } else {
       setLikes(likes + 1);
+      setIsLiked(true);
+      // Save "like" information in local storage
+      localStorage.setItem(`like-${recipe._id}`, 'true');
     }
-    setIsLiked(!isLiked);
   };
-
   const handleDeleteClick = (id) => {
     axios
       .delete(`https://recipesbackend-7dop.onrender.com/media/delete/${id}`)
@@ -83,24 +96,32 @@ export function RecipeCard({ recipe, onDelete, onSearchChange, searchInput, filt
               value={editedRecipeName}
               onChange={(e) => setEditedRecipeName(e.target.value)}
             />
-          <FontAwesomeIcon icon={faSave} onClick={handleSaveClick} size="2x" />
+          <Tooltip title="Save">
+              <FontAwesomeIcon icon={faSave} onClick={handleSaveClick} size="2x" />
+            </Tooltip>
 
           </div>
         ) : (
           <>
             <p className="recipe-title">{recipe.recipe}</p>
-            <FontAwesomeIcon icon={faEdit} onClick={handleEditClick} />
+            <Tooltip title="Edit">
+              <FontAwesomeIcon icon={faEdit} onClick={handleEditClick} />
+            </Tooltip>
           </>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <FavoriteBorderIcon
-            style={{ marginTop: '10px', color: likeButtonColor }}
-            onClick={handleLikeClick}
-          />
-          <DeleteIcon
-            style={{ marginTop: '10px', cursor: 'pointer' }}
-            onClick={() => handleDeleteClick(recipe._id)}
-          />
+        <Tooltip title="Like">
+            <FavoriteBorderIcon
+              style={{ marginTop: '10px', color: likeButtonColor }}
+              onClick={handleLikeClick}
+            />
+          </Tooltip>
+          <Tooltip title="Delete">
+            <DeleteIcon
+              style={{ marginTop: '10px', cursor: 'pointer' }}
+              onClick={() => handleDeleteClick(recipe._id)}
+            />
+          </Tooltip>
         </div>
       </div>
     </div>

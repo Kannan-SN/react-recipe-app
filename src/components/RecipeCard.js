@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function RecipeCard({ recipe, onDelete }) {
   const [likes, setLikes] = useState(0);
@@ -28,11 +29,18 @@ export default function RecipeCard({ recipe, onDelete }) {
       <div className="recipe-card-info">
         <p className="recipe-title">{recipe.recipe}</p>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <FavoriteBorderIcon
-            style={{ marginTop: '10px', color: likeButtonColor }}
-            onClick={handleLikeClick}
-          />
-          <DeleteIcon style={{ marginTop: '10px', cursor: 'pointer' }} onClick={handleDeleteClick} />
+        <Tooltip title="Like">
+            <FavoriteBorderIcon
+              style={{ marginTop: '10px', color: likeButtonColor }}
+              onClick={handleLikeClick}
+            />
+          </Tooltip>
+          <Tooltip title="Delete">
+            <DeleteIcon
+              style={{ marginTop: '10px', cursor: 'pointer' }}
+              onClick={() => handleDeleteClick(recipe._id)}
+            />
+          </Tooltip>
         </div>
       </div>
     </div>

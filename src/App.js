@@ -22,8 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
-          <Route path="/addRecipe" element={<RecipeForm/>}/>
+         
            <Route path="/updateRecipe" element={<Updateitem />} />
+           <Route path="/addRecipe" element={<RecipeForm/>}/>
         </Routes>
       </div>
       <Footer />

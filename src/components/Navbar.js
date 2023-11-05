@@ -24,16 +24,18 @@ export default function Navbar(){
         //     path: "/settings",
         //     icon: faCog
         // },
+       
+        {
+            name: "Update Recipe",
+           
+            path: "/updateRecipe",
+           
+        },
         {
             name: "Add Recipe",
             path: "/addRecipe",
            
         },
-        {
-            name: "Update Recipe",
-            path: "/updateRecipe",
-           
-        }
     ]
 
     function closeSidebar(){
