@@ -25,8 +25,13 @@ export default function Navbar(){
         //     icon: faCog
         // },
         {
-            name: "Add Item",
-            path: "/additem",
+            name: "Add Recipe",
+            path: "/addRecipe",
+           
+        },
+        {
+            name: "Update Recipe",
+            path: "/updateRecipe",
            
         }
     ]

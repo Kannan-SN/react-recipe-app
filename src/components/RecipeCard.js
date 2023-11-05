@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import CustomImage from './CustomImage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function RecipeCard({ recipe }) {
+export default function RecipeCard({ recipe, onDelete }) {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
-    // Toggle the like status and increment/decrement the number of likes
     if (isLiked) {
       setLikes(likes - 1);
     } else {
@@ -17,19 +15,24 @@ export default function RecipeCard({ recipe }) {
     setIsLiked(!isLiked);
   };
 
+  const handleDeleteClick = () => {
+    // Call the onDelete function and pass the recipe's ID for deletion
+    onDelete(recipe._id);
+  };
+
   const likeButtonColor = isLiked ? 'orange' : 'initial';
 
   return (
     <div className="recipe-card">
-      <CustomImage imgSrc={recipe.image} pt="65%" />
+      <img src={recipe.image} alt={recipe.recipe} />
       <div className="recipe-card-info">
-        <p className="recipe-title">{recipe.title}</p>
+        <p className="recipe-title">{recipe.recipe}</p>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <FavoriteBorderIcon
             style={{ marginTop: '10px', color: likeButtonColor }}
             onClick={handleLikeClick}
           />
-          <DeleteIcon style={{ marginTop: '10px' }} />
+          <DeleteIcon style={{ marginTop: '10px', cursor: 'pointer' }} onClick={handleDeleteClick} />
         </div>
       </div>
     </div>

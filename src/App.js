@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 // import Settings from "./pages/Settings";
 import RecipeForm from "./pages/Additem";
+import Updateitem from "./pages/Updateitem";
 
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
-          {/* <Route element={<Settings />} /> */}
-          <Route path="/additem" element={<RecipeForm/>}/>
+          <Route path="/addRecipe" element={<RecipeForm/>}/>
+           <Route path="/updateRecipe" element={<Updateitem />} />
         </Routes>
       </div>
       <Footer />
